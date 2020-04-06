@@ -1,0 +1,41 @@
+// Created on Mon April 6 2020
+
+int l_motor = 0;
+int r_motor = 2;
+int speed = 50; 
+int counter;
+int pause = 1000;
+int pause2 = 2750;
+
+
+void forward(){
+   motor(l_motor,speed);//go forward 
+   motor(r_motor,speed);
+}
+void backward(){
+   motor(l_motor,-speed);//go back 
+   motor(r_motor,-speed);
+}
+void r_turn(){
+   motor(l_motor,speed);//turn right
+   motor(r_motor,-speed);
+}
+
+
+int main()
+{
+	forward();
+	msleep(pause2);
+	ao();
+	for(counter=0;  counter<=12;  counter+=3){
+		forward();
+		msleep(pause);
+		backward();
+		msleep(pause);
+		r_turn();
+		msleep(pause2);
+		printf("counter is %d \n", counter);
+	}
+	
+	return 0;
+}
